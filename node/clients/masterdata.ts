@@ -10,7 +10,7 @@ import FormData from 'form-data'
 import { statusToError } from '../utils'
 
 export class MasterData extends ExternalClient {
-  public constructor(ctx: IOContext, options?: InstanceOptions) {
+  constructor(ctx: IOContext, options?: InstanceOptions) {
     super(`http://api.vtex.com/${ctx.account}/dataentities`, ctx, {
       ...options,
       headers: {
@@ -36,7 +36,12 @@ export class MasterData extends ExternalClient {
       metric: 'masterdata-getPublicSchema',
     })
 
-  public getDocument = <T>(acronym: string, id: string, fields: string[], account?: string) =>
+  public getDocument = <T>(
+    acronym: string,
+    id: string,
+    fields: string[],
+    account?: string
+  ) =>
     this.get<T>(this.routes.document(acronym, id), {
       metric: 'masterdata-getDocument',
       params: {
@@ -45,7 +50,12 @@ export class MasterData extends ExternalClient {
       },
     })
 
-  public createDocument = (acronym: string, fields: object, schema?: string, account?: string) =>
+  public createDocument = (
+    acronym: string,
+    fields: object,
+    schema?: string,
+    account?: string
+  ) =>
     this.post<DocumentResponse>(this.routes.documents(acronym), fields, {
       metric: 'masterdata-createDocument',
       params: {
@@ -59,7 +69,7 @@ export class MasterData extends ExternalClient {
     id: string,
     fields: object,
     account?: string,
-    schema?: string,
+    schema?: string
   ) =>
     this.patch(this.routes.document(acronym, id), fields, {
       metric: 'masterdata-updateDocument',
