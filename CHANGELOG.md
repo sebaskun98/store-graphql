@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Changed
+- Updated VTEX tooling
+- Auto-fixed linting in all files
+
 ## [2.136.0] - 2020-10-29
 ### Added
 - `fields` argument to `subscribeNewsletter` mutation.
